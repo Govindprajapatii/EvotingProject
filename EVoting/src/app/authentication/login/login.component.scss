@@ -1,0 +1,43 @@
+.button{
+    display: flex;
+    background-color: transparent;
+   justify-content:flex-end;
+}
+
+.form-body{
+    justify-content: center;
+}
+mat-card-title,
+mat-card-content{
+    display: flex;
+ justify-content: center;   
+}
+.mat-form-field{
+    width: 100%;
+    min-width: 400px;
+    justify-content: center;
+}
+  mat-card-footer{
+    display: flex;
+      justify-content:center;
+      color: rgb(153, 99, 238);
+  }
+  mat-error{
+      color: red;
+  }
+  mat-card{
+
+  width: 100%;   
+
+  }
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .mat-form-field{
+     min-width: 250px;
+    }
+  }
+
+  mat-radio-button{
+    margin:10px;
+  }

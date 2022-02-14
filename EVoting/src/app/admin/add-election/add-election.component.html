@@ -1,0 +1,84 @@
+<mat-card>
+
+    <mat-card-title>
+        Admin Registration
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="newElection" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input type="text" formControlName="Title" placeholder="Title" matInput>
+                <mat-error *ngIf="Title.errors?.['required']">Election title is Required</mat-error>
+                <mat-error *ngIf="Title.invalid && !Title.errors?.['required']">Enter Valid Title</mat-error>
+            </mat-form-field>
+            <!-- <mat-select formControlName="Candidates" placeholder="Candidates" >
+                <mat-option *ngFor="let x of ElectionTitles" [value]="x">{{x}}</mat-option>
+            </mat-select> -->
+           
+            
+            <mat-form-field >
+                <mat-label>Election Date</mat-label>
+                <input type="date" formControlName="ElectionDate" placeholder="Election Date" matInput>
+                <mat-error *ngIf="ElectionDate.errors?.['required']"> Election Date is Required</mat-error>
+                <mat-error *ngIf="!ElectionDate.errors?.['required'] && ElectionDate.invalid">Enter a Valid Date</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field >
+                <mat-label>
+                    Start Time
+                </mat-label>
+                <input type="time" formControlName="StartTime" placeholder="Start Time" matInput>
+                <mat-error *ngIf="StartTime.errors?.['required']">Start Required</mat-error>
+                <mat-error *ngIf="!StartTime.errors?.['required'] && StartTime.invalid">Enter valid Start Time</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>End Time</mat-label>
+                <input type="time" formControlName="EndTime" placeholder="End Time" for="End Time" matInput>
+                <mat-error *ngIf="EndTime.errors?.['required']"> End Time Required</mat-error>
+                <mat-error *ngIf="!EndTime.errors?.['required'] && EndTime.invalid"> Enter valid End Time</mat-error>
+            </mat-form-field>
+            <mat-form-field >
+            <mat-label>First Option</mat-label>
+            <input type="text" formControlName="Option1" placeholder="First Option" aria-label="First Candidate" matInput>
+<!-- 
+                <mat-error *ngIf="Candidates.errors?.['required']">Election title is Required</mat-error>
+                <mat-error *ngIf="Candidates.invalid && !Title.errors?.['required']">Enter Valid Title</mat-error> -->
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Second Option</mat-label>
+
+                <input type="text" formControlName="Option2" placeholder="Second Option"  matInput>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Third Option</mat-label>
+
+                <input type="text" formControlName="Option3" placeholder="Third Option"   matInput>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Forth Option</mat-label>
+
+                <input type="text" formControlName="Option4" placeholder="Forth Option" matInput>
+
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Select Voters</mat-label>
+                <mat-select formControlName="SelectVoters" multiple>
+                    <mat-select-trigger>
+                      {{SelectVoters.value ? SelectVoters.value[0] : ''}}
+                      <span *ngIf="SelectVoters.value?.length > 1" class="example-additional-selection">
+                        (+{{SelectVoters.value.length - 1}} {{SelectVoters.value?.length === 2 ? 'other' : 'others'}})
+                      </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let voter of voters" [value]="voter">{{voter}}</mat-option>
+                  </mat-select>
+                
+            </mat-form-field>        
+            <button mat-button class="button" [disabled]="newElection.invalid"> Submit </button>
+            
+            
+        </form>
+    </mat-card-content>
+</mat-card>

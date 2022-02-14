@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-sm-4 col"  *ngFor="let x of numbers">
+        <mat-card >
+            <mat-card-header>
+                <mat-card-title>
+                    {{x.title}}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-grid-list cols=4 rowHeight="30px">
+                    <mat-grid-tile colspan="2" rowspan="1" >
+                        <div class="date-box">
+                            Date : {{x.ElectionDate}} 
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="2" rowspan="1" class="">
+                   <div class="status-box">
+                       Status : {{x.Status}}
+                   </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <div class="option-section">
+                <mat-grid-list cols=4 rowHeight="35px">
+
+                 <mat-grid-tile colspan="4" rowspan="1" class="option-head" > 
+                     <strong>OPTIONS</strong> 
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                    <mat-grid-list cols=4 rowHeight="35px">
+                        <mat-grid-tile colspan="1" rowspan="1" >
+                        </mat-grid-tile>
+                        <small class="bar-label"> {{x.Option1}} ({{x.Vote1}}) </small>
+                    <mat-grid-tile colspan="3" rowspan="1" >
+                        <mat-progress-bar [value]="(x.Vote1 * 100)/x.total" class="progress-bar" ></mat-progress-bar> 
+                    </mat-grid-tile>
+
+                    <mat-grid-tile colspan="1" rowspan="1" >
+                        <small class="bar-label"> {{x.Option2}} ({{x.Vote2}}) </small>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1" > 
+                        <mat-progress-bar [value]="(x.Vote2 * 100)/x.total" class="progress-bar" color="warn"></mat-progress-bar>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile colspan="1" rowspan="1" >
+                        <small class="bar-label"> {{x.Option3}} ({{x.Vote3}}) </small>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1">
+                        <mat-progress-bar [value]="(x.Vote3 * 100)/x.total" class="progress-bar" color="accent"></mat-progress-bar>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile colspan="1" rowspan="1" >
+                        <small class="bar-label"> {{x.Option4}} ({{x.Vote4}}) </small>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1"  color="red" > 
+                        <mat-progress-bar [value]="(x.Vote4 * 100)/x.total" class="progress-bar" color="red">
+
+                        </mat-progress-bar>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+                <mat-grid-list cols=4 rowHeight="30px" class="time-box">
+                    <mat-grid-tile colspan="2" rowspan="1"> 
+                           Start Time : 
+                        </mat-grid-tile> 
+                     <mat-grid-tile colspan="2" rowspan="1"> 
+                        End Time :  
+                     </mat-grid-tile>
+                      <mat-grid-tile colspan="2" rowspan="1"> 
+                         {{x.StartTime}}
+                     </mat-grid-tile> 
+                     <mat-grid-tile colspan="2" rowspan="1"> 
+                        {{x.EndTime}} 
+                     </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="1" rowHeight="20px">
+                    <mat-grid-tile class="footer-box">
+                      Winner : 
+                      <strong *ngIf="x.Vote1>x.Vote2 && x.Vote1>x.Vote4 && x.Vote1>x.Vote3"> {{x.Option1}}</strong>
+                      <strong *ngIf="x.Vote2>x.Vote1 && x.Vote2>x.Vote3 && x.Vote2>x.Vote4"> {{x.Option2}}</strong>
+                      <strong *ngIf="x.Vote3>x.Vote1 && x.Vote3>x.Vote2 && x.Vote3>x.Vote4"> {{x.Option3}}</strong>
+                      <strong *ngIf="x.Vote4>x.Vote1 && x.Vote4>x.Vote2 && x.Vote4>x.Vote3"> {{x.Option4}}</strong>
+                    
+                    </mat-grid-tile>
+                        
+                </mat-grid-list>
+                
+            </mat-card-content>
+           
+            
+        </mat-card>
+    </div>
+</div>

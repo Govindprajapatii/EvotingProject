@@ -1,0 +1,28 @@
+<div class="row">
+    <h1 class="head"> {{livePool.Title}}</h1>
+    <h2 class="error" *ngIf="livePool.VoteStatus">You Have alrady Voted Thank You!!!</h2>
+    <mat-radio-group  class="content row"  *ngIf="!livePool.VoteStatus" aria-label="Select One Option">
+        
+        <mat-label class="col-sm-12"><strong>Select One Option </strong>  </mat-label>
+        
+        <div class="col-sm-5 options">
+            <mat-radio-button [value]="livePool.Option1">{{livePool.Option1}}</mat-radio-button>
+        </div>
+        <div class="col-sm-5 options">
+            <mat-radio-button [value]="livePool.Option2">{{livePool.Option2}}</mat-radio-button>
+        </div>
+        <div class="col-sm-5 options">
+            <mat-radio-button [value]="livePool.Option3">{{livePool.Option3}}</mat-radio-button>
+        </div>
+        <div class="col-sm-5 options">
+            <mat-radio-button [value]="livePool.Option4">{{livePool.Option4}}</mat-radio-button>
+        </div>
+        <div class="col-sm-12 button">
+            <button mat-stroked-button (click)="onSubmit()"> submit </button>
+            
+        </div>
+    </mat-radio-group>
+    <a (click)="onClose()" mat-stroked-button class="error">Close</a>
+</div>
+    
+    

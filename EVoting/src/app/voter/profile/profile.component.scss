@@ -1,0 +1,56 @@
+mat-form-field{
+    width: 46%;
+    min-width: 100px;
+    margin: auto 10px;
+    cursor: default;
+}
+mat-card-title{
+    display: flex;
+    justify-content: center;
+}
+.img-profile{
+ width: 200px;
+ border-radius: 50%;
+ margin: auto auto;
+}
+.img-box{
+    display: flex;
+    justify-content: center;
+    margin: 50%;
+}
+.profile-box{
+    display: flex;
+    margin-top:25%;
+}
+@media only screen and(max-width:1155px)
+{
+    mat-form-field{
+        width: 100%;
+        min-width: 100px;
+        margin: auto 25px;
+        cursor: default;
+    }
+}
+@media only screen and(max-width:573px)
+{
+    .profile-box{
+        
+        margin-top:2%;
+    }
+    .img-box{
+        margin : 2%;
+    }
+    mat-form-field{
+        width: 100%;
+        min-width: 100px;
+        margin: 5px 5px;
+        cursor: default;
+    }
+}
+.button-cross{
+    color:red;
+    text-decoration: none;
+    cursor: pointer;
+    float: right;
+    justify-content: right;
+}

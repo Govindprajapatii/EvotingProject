@@ -1,0 +1,109 @@
+.content{
+    margin: auto auto;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+
+}
+.mat-card{
+    max-width: 600px;
+    height: 300px;
+    width:98%;
+    margin: 10px 10px;
+    margin-right: 10px;
+    padding: 0%;
+}
+
+@media only screen and (max-width: 925px)
+{
+    .mat-card{
+        max-width: 400px;
+    }
+
+}
+@media only screen and (max-width: 850px)
+{
+    .col{
+        width: 50%;
+        // margin: 0px 0px;
+    }
+    .mat-card{
+        width: 350px;
+        max-width: 95%;
+    }
+
+}
+@media only screen and (max-width: 600px)
+{
+    .col{
+        width: 100%;
+    }
+    .mat-card{
+     width: 500px;
+     margin : 5px 2px;
+        max-width: 99%;
+    }
+}
+.mat-card-header{
+    background-color: rgba(0, 0, 255, 0.39);
+    display: flex;
+    justify-content: center;
+
+}
+.mat-card-title{
+    margin: 10px;
+    text-shadow: 2px 2px 4px #000000;
+    color:white;
+    justify-content: flex-start;
+
+}
+.mat-card-content{
+    padding: 5px;
+}
+.date-box{
+    left: 2px;
+    position: absolute;
+    color: rgba(224, 31, 31, 0.644);
+    font-size: 15px;
+    text-shadow: 1px 1px 2px #dda7a7;
+
+
+
+}
+
+.status-box{
+    position: absolute;
+    right: 1px;
+    color: rgba(224, 31, 31, 0.644);
+    font-size: 15px;
+    text-shadow: 1px 1px 2px #dda7a7;
+
+
+}
+
+.option-section{
+    background-color: hsla(272, 83%, 91%, 0.616);
+}
+.option-head{
+ font-size: 17px;
+ text-shadow: 1px 1px 2px #0808085b;
+
+}
+.option-box{
+    border: 2px solid rgba(8, 8, 8, 0.144);
+    text-shadow: 1px 1px 2px #00000077;
+
+   }
+   .time-box{
+    //    background-color: rgb(215, 215, 238);
+    border: 2px solid rgba(8, 8, 8, 0.144);
+   }
+   .box-footer{
+       background-color: rgba(0, 0, 0, 0.568);
+       color:rgba(105, 105, 216, 0.801);
+       font-size: 20px;
+       padding: 0%;
+    }
+.button{
+margin-right: 6px;
+}

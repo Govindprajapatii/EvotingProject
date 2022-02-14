@@ -1,0 +1,99 @@
+<div class="content">
+    <mat-toolbar>
+        <button mat-stroked-button class="button" (click)="isAllClick()">All</button>
+
+        <button mat-stroked-button class="button" (click)="isActiveClick()">Active</button>
+        <button mat-stroked-button class="button" (click)="isCompletedClick()">Completed</button>
+        <button mat-stroked-button class="button" (click)="isUpCommingClick()">Upcomming</button>
+          <span class="spacer"></span>
+            
+    </mat-toolbar>
+    <div>
+    </div>
+
+</div>
+<div class="content mt-3">
+    <h1 *ngIf="isAll" >All Elections</h1>
+    <h1 *ngIf="isActive" >Active Elections</h1>
+    <h1 *ngIf="isCompleted" >Completed Elections</h1>
+    <h1 *ngIf="isUpComming" >Upcomming Elections</h1>
+</div>
+<div class="row">
+    <div  [class]="Status == x.Status || isAll?'col-sm-4 col':''"  *ngFor="let x of numbers;">
+        
+        <mat-card *ngIf="Status == x.Status || isAll">
+            <mat-card-header>
+                <mat-card-title>
+                    {{x.title}}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-grid-list cols=4 rowHeight="30px">
+                    <mat-grid-tile colspan="2" rowspan="1" >
+                        <div class="date-box">
+                            Date : {{x.ElectionDate}} 
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="2" rowspan="1" class="">
+                   <div class="status-box">
+                       Status : {{x.Status}}
+                   </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <div class="option-section">
+                <mat-grid-list cols=4 rowHeight="50px">
+
+                 <mat-grid-tile colspan="4" rowspan="1" class="option-head" > 
+                     <strong>OPTIONS</strong> 
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                    <mat-grid-list cols=4 rowHeight="90px">
+
+                    <mat-grid-tile colspan="1" rowspan="1" class="option-box">
+                        {{x.Option1}}
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="1" rowspan="1" class="option-box" > 
+                        {{x.Option2}} 
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="1" rowspan="1" class="option-box">
+                        {{x.Option3}}
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="1" rowspan="1" class="option-box" > 
+                        {{x.Option4}} 
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+                <mat-grid-list cols=4 rowHeight="30px" class="time-box">
+                    <mat-grid-tile colspan="2" rowspan="1"> 
+                        Registration Date:  
+                     </mat-grid-tile>
+                     <mat-grid-tile colspan="1" rowspan="1"> 
+                         Start Time : 
+                        </mat-grid-tile> 
+                        
+                        <mat-grid-tile colspan="1" rowspan="1"> 
+                            End Time :  
+                     </mat-grid-tile>
+                     <mat-grid-tile colspan="2" rowspan="1"> 
+                        {{x.RegistrationDate}}
+                    </mat-grid-tile> 
+                      <mat-grid-tile colspan="1" rowspan="1"> 
+                         {{x.StartTime}}
+                     </mat-grid-tile> 
+                     <mat-grid-tile colspan="1" rowspan="1"> 
+                        {{x.EndTime}} 
+                     </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="1" rowHeight="20px" class="box-footer">
+                    <mat-grid-tile> 
+                        <a routerLink="">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                     </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+                

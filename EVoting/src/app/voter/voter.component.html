@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="full-height">
+            <div class="row">
+        <mat-toolbar>
+            <a mat-button routerLink="./">Home</a>
+            <a mat-button routerLink="Polls">Polls</a>
+            <a mat-button routerLink="Profile">Profile</a>
+            <span class="spacer"></span>
+            <a mat-button (click)="logoutClick()" routerLink="../">Log Out</a>
+           
+        </mat-toolbar>
+         <router-outlet></router-outlet>
+        </div>
+        </div>
+    </div>

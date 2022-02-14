@@ -1,0 +1,27 @@
+.full-width-table {
+   width: 80%;
+  margin: auto auto;
+}
+.admin-avatar{
+  size: 20px;
+  width: 20px;
+}
+.actions{
+margin:2px;
+}
+
+
+@media only screen and (max-width:850px) {
+.table-mobile
+{
+  font-size: 11px;
+  // width: 40px;
+  margin: 0%;
+  align-items : center;
+}
+.full-width-table{
+  width: 100%;
+  max-width: 100%;
+
+}
+}

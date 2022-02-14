@@ -1,0 +1,12 @@
+
+<mat-sidenav-container [hasBackdrop]="HasBackdrop" (window:resize)="onResize()">
+    <mat-sidenav [mode]="Mode" #sidenav >
+        <app-sidenav ></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <a mat-button (click)="sidenav.toggle()"> <i class="fa fa-bars"></i> Menu</a>
+        <div class="containt">
+           <router-outlet> </router-outlet>
+       </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

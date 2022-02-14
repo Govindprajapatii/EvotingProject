@@ -1,0 +1,46 @@
+
+<div class="button">
+    <button class="close text-danger" mat-button (click)="onLoginClose()">X</button>
+</div>
+    <mat-card-title>
+        <h1>
+            Login
+        </h1>
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit">
+                 
+            <mat-label ><strong>User Type </strong>  </mat-label>
+                    
+            <mat-radio-group   aria-label="User Type" formControlName="userRole">
+                <mat-radio-button value="SuperAdmin"> SuperAdmin </mat-radio-button>
+                <mat-radio-button value="Admin"> Admin </mat-radio-button>
+                <mat-radio-button value="Voter"> Voter </mat-radio-button>
+                
+                
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-label>User Name</mat-label>
+                <input type="email" matInput placeholder="me@example.com" formControlName="Email" required >
+                <mat-error *ngIf="Email?.errors?.['required']">
+                  User Name is <strong> required.</strong> 
+                </mat-error>
+                <mat-error *ngIf="!Email?.errors?.['required'] && Email?.invalid">
+                  Enter valid Email
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label> 
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-error *ngIf="password?.errors?.['required']">
+                    Password is <strong> required.</strong> 
+                  </mat-error>
+            </mat-form-field>
+            <div >
+                <button class="button" type="submit" mat-button (click)="onSubmit()" [disabled]="loginForm.invalid"> submit</button>
+            </div>
+        </form>
+        </mat-card-content>
+            <mat-card-footer>
+                    <button type="submit" class="button" mat-button (click)="onSubmit()"> Forgot Password</button>
+            </mat-card-footer>

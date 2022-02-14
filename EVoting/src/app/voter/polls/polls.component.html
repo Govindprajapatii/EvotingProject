@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-sm-4 col" *ngFor="let x of numbers;">
+
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    {{x.title}}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-grid-list cols=4 rowHeight="30px">
+                    <mat-grid-tile colspan="2" rowspan="1">
+                        <div class="date-box">
+                            Date : {{x.ElectionDate}}
+                        </div>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="2" rowspan="1" class="">
+                        <div class="status-box">
+                            Status : {{x.Status}}
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <div class="option-section">
+                    <mat-grid-list cols=4 rowHeight="50px">
+
+                        <mat-grid-tile colspan="4" rowspan="1" class="option-head">
+                            <strong>OPTIONS</strong>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+
+                    <mat-grid-list cols=4 rowHeight="90px">
+
+                        <mat-grid-tile colspan="1" rowspan="1" class="option-box">
+                            {{x.Option1}}
+                        </mat-grid-tile>
+                        <mat-grid-tile colspan="1" rowspan="1" class="option-box">
+                            {{x.Option2}}
+                        </mat-grid-tile>
+                        <mat-grid-tile colspan="1" rowspan="1" class="option-box">
+                            {{x.Option3}}
+                        </mat-grid-tile>
+                        <mat-grid-tile colspan="1" rowspan="1" class="option-box">
+                            {{x.Option4}}
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+                <mat-grid-list cols=4 rowHeight="30px" class="time-box">
+                    <mat-grid-tile colspan="1" rowspan="1">
+                        <strong>Start Time : </strong>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile colspan="1" rowspan="1">
+                        <strong> End Time : </strong>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="2" rowspan="1" color="red">
+                   <strong> Close In: </strong>                         
+                </mat-grid-tile>
+
+                    <mat-grid-tile colspan="1" rowspan="1">
+                        <strong>{{x.StartTime}}</strong>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="1" rowspan="1">
+                        <strong>{{x.EndTime}} </strong>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="2" rowspan="1" class="text-danger"> 
+                  <strong *ngIf="x.Status == 'Active'">  {{getDateDiff(x.ElectionDate+" "+x.EndTime)}}</strong>
+                  <strong *ngIf="x.Status != 'Active'">{{x.Status}}</strong>
+                    
+                </mat-grid-tile> 
+
+                </mat-grid-list>
+                <mat-grid-list cols="1" rowHeight="20px" class="box-footer">
+                    <mat-grid-tile>
+                        <a *ngIf="x.Status == 'Active'"
+                        class="footer-link"
+                        (click)="VoteCastClick(x.id)">
+                        Cast Your Vote
+                        <i class="fa fa-arrow-right"></i>
+                        </a>
+                        <a *ngIf="x.Status != 'Active'"
+                        class="footer-link"
+                        (click)="VoteCastNotActive()">
+                        Not Active
+                        <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

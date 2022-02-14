@@ -1,0 +1,71 @@
+<div class="card-profile">
+
+    <mat-card-header>
+        <mat-card-title>
+        Voter Profile
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="img-box">
+
+                    <img class="img-profile" src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-business-user-profile-vector-png-image_1541960.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="profile-box">
+
+                    <form [formGroup]="voterForm">
+                            <mat-form-field >
+                                <mat-label>First Name</mat-label>
+                                <input type="text" formControlName="FirstName" placeholder="First Name" matInput>
+                              </mat-form-field>
+                
+                            <mat-form-field >
+                                <mat-label>Last Name</mat-label>
+                                <input type="text" formControlName="LastName" placeholder="Last Name" matInput>
+                            </mat-form-field>
+                            
+                            <mat-form-field >
+                                <mat-label>
+                                    Email
+                                </mat-label>
+                                <input type="email" formControlName="Email" placeholder="Email" matInput>
+                            </mat-form-field>
+                
+                            <mat-form-field>
+                                <mat-label>Mobile</mat-label>
+                                <input type="number" formControlName="Mobile" placeholder="Mobile No." for="Mobile" matInput>
+                            </mat-form-field>
+                
+                            <mat-form-field >
+                                <mat-label>
+                                    Date of Birth
+                                </mat-label>
+                                <input type="text" formControlName="DOB" placeholder="Date of Birth" matInput>
+                            </mat-form-field>
+                       <mat-form-field>
+                           <mat-label>Gender</mat-label>
+                           <input type="text" matInput formControlName="Gender">
+                       </mat-form-field>
+                
+                               
+                                <mat-form-field >
+                                    <mat-label>Address</mat-label>
+                                    <input type="text" formControlName="Address" placeholder="Address" matInput>
+                                </mat-form-field>
+                                    
+                                <mat-form-field >
+                                    <mat-label>Registration Date</mat-label>
+                                    <input type="text" formControlName="RegistrationDate" placeholder="Address" matInput>
+                                </mat-form-field>
+                                    
+                                
+                          
+                </form>
+            </div>
+        </div>
+        </div>
+    </mat-card-content>
+</div>

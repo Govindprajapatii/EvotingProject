@@ -1,0 +1,39 @@
+.head{
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    color:black;
+    text-shadow:1px 1px 1px rgba(0, 0, 255, 0.356);
+}
+.options{
+    justify-content: center;
+    justify-items: center;
+    margin: 20px 6px;
+    // background-color: bisque;
+    border: 2px solid black;
+    height: 50px;
+    align-items: center;
+    text-align: center;
+
+}
+.content{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    color: rgba(50, 26, 187, 0.623);
+    text-shadow: 1px 1px 1px black;
+    font-size: large;
+}
+mat-radio-button{
+    margin: 10px;
+}
+.button{
+    display: flex;
+    justify-content: flex-start;
+}
+.error{
+    margin-top: 10px;
+    color:red;
+    display: flex;
+    justify-content: center;
+}
