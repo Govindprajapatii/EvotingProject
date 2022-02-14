@@ -8,26 +8,27 @@ import { SuperAdminService } from 'src/app/servicies/super-admin.service';
 
 
 // TODO: Replace this with your own data model type
-export interface EmployeeTableItem {
+export interface AdminTableItem {
   firstName: string;
   lastName: string;
   registrationDate: string;
   userId: number;
   email:string;
   status :string;
+  isActive :Boolean;
 }
-export class EmployeeTableDataSource extends DataSource<EmployeeTableItem> {
-  data: EmployeeTableItem[] =[];
+export class AdminTableDataSource extends DataSource<AdminTableItem> {
+  data: AdminTableItem[] =[];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(private employeeTableItem:EmployeeTableItem[]) {
+  constructor(private employeeTableItem:AdminTableItem[]) {
     super();
     this.data = employeeTableItem;
   }
 
  
-  connect(): Observable<EmployeeTableItem[]> {
+  connect(): Observable<AdminTableItem[]> {
     if (this.paginator && this.sort) {
         return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
@@ -44,7 +45,7 @@ export class EmployeeTableDataSource extends DataSource<EmployeeTableItem> {
    */
   disconnect(): void {}
 
-  private getPagedData(data: EmployeeTableItem[]): EmployeeTableItem[] {
+  private getPagedData(data: AdminTableItem[]): AdminTableItem[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -57,7 +58,7 @@ export class EmployeeTableDataSource extends DataSource<EmployeeTableItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: EmployeeTableItem[]): EmployeeTableItem[] {
+  private getSortedData(data: AdminTableItem[]): AdminTableItem[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }

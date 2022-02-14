@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, IterableDiffers } from '@angular/core';
 import { catchError, mapTo, Observable, of, tap } from 'rxjs';
-import { EmployeeTableItem } from '../super-admin/adimn-table/admin-table-datasource';
+import { AdminTableItem } from '../super-admin/adimn-table/admin-table-datasource';
 
 import { IUserData } from './UserData';
 
@@ -9,55 +9,56 @@ import { IUserData } from './UserData';
   providedIn: 'root'
 })
 export class SuperAdminService {
-  
-  private static adminData :IUserData[] = [];
-
   private readonly apiUrl = "https://localhost:44366/api/Users";
   constructor(private http :HttpClient) { }
 
-  getColonies()
-  {
-  return this.http.get(`${this.apiUrl}`);
-  }
-
+  
 
 
   loadUserData(){
     this.http.get(`${this.apiUrl}/AdminsList`).subscribe(x =>
       {
-      SuperAdminService.adminData = x as IUserData[];
+      console.log(x);
+      sessionStorage.setItem('UserData',JSON.stringify(x));
       });
   }
 
-  getAdminData():Observable<IUserData[]>{
+  getAdminData(id):Observable<IUserData[]>{
+    var adminData = JSON.parse(sessionStorage.getItem("UserData"));
+    for(let admin of adminData)
+    {
 
-    console.log(SuperAdminService.adminData);
-    return of(SuperAdminService.adminData);
-
+      if(admin.userId == id)
+      {
+        return of(admin); 
+      }
+    }
+    return of(null);
   }
 
 
 
 getAdminCountList(){
-
  let totalAdminCount = 0;
  let activeAdminCount = 0;
-  for (let user of SuperAdminService.adminData){
+
+ var adminData = JSON.parse(sessionStorage.getItem("UserData"));
+
+  for (let user of adminData){
      if(user.status == 'Active')
      {
        activeAdminCount += 1;
      }
   }
-  totalAdminCount = SuperAdminService.adminData.length;
+  totalAdminCount = adminData.length;
   return {"toatlAdminCount":totalAdminCount,"activeAdminCount":activeAdminCount};
 }
 
+getAdminsList():Observable<AdminTableItem[]>{
+ var adminData = JSON.parse(sessionStorage.getItem("UserData"));
+  console.log(adminData);
 
-
-getAdminsList():Observable<EmployeeTableItem[]>{
-  console.log(SuperAdminService.adminData);
-
-  return of(SuperAdminService.adminData as unknown  as EmployeeTableItem[]);
+  return of(adminData as unknown  as AdminTableItem[]);
 }
 
 updateStatus(id,status){

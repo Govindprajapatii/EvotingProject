@@ -32,26 +32,6 @@ namespace JwtLogin.Controllers
 
 
 
-        [HttpGet]
-        [Route("AllColonies")]
-
-        public IQueryable<string> GetAllColonies()
-        {
-            try
-            {
-                var result = _userContext.GP_Users
-             .Where(a => a.Colony != null)//if you have any condition
-             .Select(m => m.Colony).Distinct();
-
-                //var result = _userContext.GP_Users.ToList<User>();
-                return result;
-            }
-            catch (Exception error)
-            {
-
-                return null;
-            }
-        }
 
         [HttpGet]
         [Route("AdminCountList")]

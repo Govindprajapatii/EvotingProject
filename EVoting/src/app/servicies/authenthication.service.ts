@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, mapTo, Observable, of, tap } from 'rxjs';
+import { IUserData } from './UserData';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,9 @@ constructor(private router:Router, private http:HttpClient) { }
 
 
 signUp(UserData):Observable<boolean>{
-return this.http.post(`${this.apiUrl}/Register`,UserData).pipe(
+  console.log(UserData);
+  // var temp = {"firstName":"Govind","lastName":"Prajapati","Email":"ABC@com","password":"Govind@11"}
+return this.http.post<any>(`${this.apiUrl}/Register`,UserData).pipe(
   tap(response => this.doLoginUser(UserData.Email,response)),
   mapTo(true),
   catchError(error => {
@@ -29,6 +32,10 @@ return this.http.post(`${this.apiUrl}/Register`,UserData).pipe(
 );
 }
 
+getColonies()
+  {
+  return this.http.get(`${this.apiUrl}/AllColonies`);
+  }
 
 
 logIn(user : {Email:string,Password:string,UserRole:string}): Observable<boolean>{

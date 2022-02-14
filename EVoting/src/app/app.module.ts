@@ -18,6 +18,7 @@ import { AdminAuthGuard } from './AuthGuard/AdminAuthGuard';
 import { SuperAdminAuthGuard } from './AuthGuard/SuperAdminAuthGuard';
 import { AuthGuard } from './AuthGuard/auth-gaurd.guard';
 import { VoterAuthGuard } from './AuthGuard/voterAuthGuard';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 
 
@@ -44,6 +45,7 @@ import { VoterAuthGuard } from './AuthGuard/voterAuthGuard';
     HttpClientModule,
     AdminModule,
     VoterModule,
+    NgHttpLoaderModule.forRoot(),
     ToastrModule.forRoot(),
     
     ],

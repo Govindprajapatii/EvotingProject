@@ -148,8 +148,6 @@ namespace JwtLogin.Controllers
                     });
                 }
                 var token = await GenerateJwtToken(existingUser);
-             
-
                 return Ok(token);
             }
             return BadRequest(new UserRegistrationResponse() { 
@@ -554,5 +552,27 @@ namespace JwtLogin.Controllers
             return dateTimeVal;
         }
 
+        //get colonies list
+
+        [HttpGet]
+        [Route("AllColonies")]
+
+        public IQueryable<string> GetAllColonies()
+        {
+            try
+            {
+                var result = _userContext.GP_Users
+             .Where(a => a.Colony != null)//if you have any condition
+             .Select(m => m.Colony).Distinct();
+
+                //var result = _userContext.GP_Users.ToList<User>();
+                return result;
+            }
+            catch (Exception error)
+            {
+
+                return null;
+            }
+        }
     }
 }

@@ -74,9 +74,27 @@ export class AdminRegistrationComponent implements OnInit {
     return this.AdminReg.get('DOB');
   }
 
+  get Role(){
+    return this.AdminReg.get("Role");
+  }
+
   onSubmit() {
 
-    this.authService.signUp(this.AdminReg.value).subscribe(status =>
+    const UserData = 
+    {
+      "FirstName":this.FirstName.value,
+      "LastName":this.LastName.value,
+      "Email":this.Email.value,
+      "PhoneNumber":this.PhoneNumber.value,
+      "DateOfBirth":this.DOB.value,
+      "Role":this.Role.value,
+      "Password":this.Password.value,
+      "Gender":this.Gender.value,
+      "Address":this.Address.value,
+      "Colony":this.Colony.value
+   }
+
+    this.authService.signUp(UserData).subscribe(status =>
       {
         if(status)
         {

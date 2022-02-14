@@ -2,25 +2,33 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { EmployeeTableDataSource as AdminTableDataSource, EmployeeTableItem as AdminTableItem, EmployeeTableItem } from './admin-table-datasource';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AdminsComponent } from '../admins/admins.component';
 import { EidtAdminComponent } from '../eidt-admin/eidt-admin.component';
 import { SuperAdminService } from 'src/app/servicies/super-admin.service';
+import { AdminTableDataSource, AdminTableItem } from './admin-table-datasource';
+
+
+
+
+
 @Component({
   selector: 'app-admin-table',
   templateUrl: './admin-table.component.html',
   styleUrls: ['./admin-table.component.scss']
 })
-export class AdimnTableComponent  {
+
+
+
+
+export class AdimnTableComponent  implements AfterViewInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<AdminTableItem>;
 
-
+  isChecked = true;
   dataSource: AdminTableDataSource;
-  adminList;
-  employeeTableItem: EmployeeTableItem[] = [];
+  employeeTableItem: AdminTableItem[] = [];
 
 
 
@@ -29,31 +37,34 @@ export class AdimnTableComponent  {
 
   constructor(private dialog: MatDialog, private superAdminService: SuperAdminService) {
     this.superAdminService.getAdminsList().subscribe(x => {
-      this.adminList = x;
-      this.employeeTableItem = this.adminList as EmployeeTableItem[];
+      
+      this.employeeTableItem = x as AdminTableItem[];
       
       this.dataSource = new AdminTableDataSource( this.employeeTableItem );
       console.log(this.dataSource);
       
-      this.LoadTable();
     });
 
 
 
   }
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
+  }
 
-
+  
   LoadTable(): void {
-
 
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
 
-  onViewClick() {
+  onViewClick(userId) {
 
-    this.dialog.open(AdminsComponent, { width: '1000px', height: '600px', minWidth: '320px' });
+    this.dialog.open(AdminsComponent, { width: '1000px', height: '600px', minWidth: '320px',data:{"userId":userId}});
   }
 
   onEditClick() {
@@ -71,14 +82,19 @@ export class AdimnTableComponent  {
         
         if(isSuccess)
         {
-          this.employeeTableItem[index].status = 'Deactivated';
+          
+         
         }
       });
     }
     else{
       this.superAdminService.updateStatus(userId,"Active").subscribe(isSuccess => {
         if(isSuccess)
-        this.employeeTableItem[index].status = 'Active';     
+        {
+          // this.employeeTableItem[index].isActive = true;
+
+          this.employeeTableItem[index].status = 'Active';     
+        }
     });
     }
   }

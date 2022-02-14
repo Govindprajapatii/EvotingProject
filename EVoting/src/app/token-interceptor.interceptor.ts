@@ -16,14 +16,14 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
   constructor(private authService: AuthenthicationService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+   console.log("Request Body"+request.body);
     if (this.authService.getJwtToken()) {
       request = this.addToken(request , this.authService.getJwtToken());
     }
 
     return next.handle(request).pipe(catchError(errors => {
-      // errors instanceof HttpResponse &&
-      if ( errors.status === 401) {
+     
+      if (  errors instanceof HttpResponse && errors.status === 401) {
         return this.handle401Error(request, next);
       } else {
           return throwError(errors);

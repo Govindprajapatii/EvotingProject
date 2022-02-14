@@ -49,6 +49,7 @@ export class VoterRegistrationComponent implements OnInit {
 
   VoterReg = new FormGroup(
     {
+      userId : new FormControl('1234'),
       FirstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       LastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       Email: new FormControl('', [Validators.required, Validators.minLength(6), Validators.email]),
@@ -64,6 +65,10 @@ export class VoterRegistrationComponent implements OnInit {
     }, { validators: passwordMatchValidator }
   );
 
+
+  get Role(){
+    return this.VoterReg.get("Role");
+  }
   get FirstName() {
     return this.VoterReg.get('FirstName');
   }
@@ -111,7 +116,24 @@ export class VoterRegistrationComponent implements OnInit {
       return;
     }
     
-    this.authService.signUp(this.VoterReg.value).subscribe(status =>
+  console.log(this.VoterReg.value);
+  
+    const UserData = 
+      {
+        "FirstName":this.FirstName.value,
+        "LastName":this.LastName.value,
+        "Email":this.Email.value,
+        "PhoneNumber":this.PhoneNumber.value,
+        "DateOfBirth":this.DOB.value,
+        "Role":this.Role.value,
+        "Password":this.Password.value,
+        "Gender":this.Gender.value,
+        "Address":this.Address.value,
+        "Colony":this.Colony.value
+     }
+   
+   ;
+    this.authService.signUp(UserData).subscribe(status =>
       {
         if(status)
         {
