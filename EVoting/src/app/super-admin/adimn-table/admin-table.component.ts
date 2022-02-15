@@ -67,9 +67,9 @@ export class AdimnTableComponent  implements AfterViewInit{
     this.dialog.open(AdminsComponent, { width: '1000px', height: '600px', minWidth: '320px',data:{"userId":userId}});
   }
 
-  onEditClick() {
+  onEditClick(userId) {
 
-    this.dialog.open(EidtAdminComponent, { width: '1000px', height: '600px', minWidth: '320px' });
+    this.dialog.open(EidtAdminComponent, { width: '1000px', height: '600px', minWidth: '320px' ,data:{"userId":userId}});
   }
 
   onDeleteClick() {

@@ -38,8 +38,20 @@ this.dialogRef.close();
 getUserById(id){
 this.superAdminService.getAdminData(id).subscribe(x=>{
   this.adminData = x;
-console.log(this.adminData);
+// console.log(this.adminData);
+this.adminForm.get("FirstName").setValue(this.adminData.firstName);
+this.adminForm.get("LastName").setValue(this.adminData.lastName);
+this.adminForm.get("Email").setValue(this.adminData.email);
+this.adminForm.get("Gender").setValue(this.adminData.gender);
+this.adminForm.get("Mobile").setValue(this.adminData.phoneNumber);
+this.adminForm.get("DOB").setValue(this.adminData.dateOfBirth);
+this.adminForm.get("Colony").setValue(this.adminData.colony);
+this.adminForm.get("Address").setValue(this.adminData.address);
+this.adminForm.get("Status").setValue(this.adminData.status);
+this.adminForm.get("RegistrationDate").setValue(this.adminData.registrationDate as Date);
 
 });
 }
+
+
 }

@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\govind.pra(2402)\\source\\repos\\JwtLogin\\EVotingApi.csproj": {}
+    "C:\\Users\\hp\\Documents\\EvotingProject\\EVotingAPI\\EVotingApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\govind.pra(2402)\\source\\repos\\JwtLogin\\EVotingApi.csproj": {
+    "C:\\Users\\hp\\Documents\\EvotingProject\\EVotingAPI\\EVotingApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\govind.pra(2402)\\source\\repos\\JwtLogin\\EVotingApi.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\EvotingProject\\EVotingAPI\\EVotingApi.csproj",
         "projectName": "EVotingApi",
-        "projectPath": "C:\\Users\\govind.pra(2402)\\source\\repos\\JwtLogin\\EVotingApi.csproj",
-        "packagesPath": "C:\\Users\\govind.pra(2402)\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\govind.pra(2402)\\source\\repos\\JwtLogin\\obj\\",
+        "projectPath": "C:\\Users\\hp\\Documents\\EvotingProject\\EVotingAPI\\EVotingApi.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\EvotingProject\\EVotingAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\govind.pra(2402)\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -82,12 +81,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -96,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }

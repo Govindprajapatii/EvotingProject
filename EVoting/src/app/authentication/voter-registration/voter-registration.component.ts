@@ -120,19 +120,17 @@ export class VoterRegistrationComponent implements OnInit {
   
     const UserData = 
       {
-        "FirstName":this.FirstName.value,
-        "LastName":this.LastName.value,
-        "Email":this.Email.value,
-        "PhoneNumber":this.PhoneNumber.value,
-        "DateOfBirth":this.DOB.value,
-        "Role":this.Role.value,
-        "Password":this.Password.value,
-        "Gender":this.Gender.value,
-        "Address":this.Address.value,
-        "Colony":this.Colony.value
+        FirstName:this.FirstName.value,
+        LastName:this.LastName.value,
+        Email:this.Email.value,
+        PhoneNumber:this.PhoneNumber.value.toString(),
+        DateOfBirth:this.DOB.value,
+        Role:this.Role.value,
+        Password:this.Password.value,
+        Gender:this.Gender.value,
+        Address:this.Address.value,
+        Colony:this.Colony.value
      }
-   
-   ;
     this.authService.signUp(UserData).subscribe(status =>
       {
         if(status)

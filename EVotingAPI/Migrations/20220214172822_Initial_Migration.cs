@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EVotingApi.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial_Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,6 +61,7 @@ namespace EVotingApi.Migrations
                     Colony = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    Role = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     RegistrationDate = table.Column<DateTime>(nullable: false)
                 },

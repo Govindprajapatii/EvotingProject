@@ -1,57 +1,51 @@
 <div class="tab">
-  <table mat-table class="full-width-table" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef class="table-mobile">Id</th>
-      <td mat-cell *matCellDef="let row" class="table-mobile">{{row.userId}}</td>
-    </ng-container>
-    
-    <!-- Name Column -->
-    <ng-container matColumnDef="name" >
-    <!--ADD mat-sort-header  to add sorting-->
+    <table mat-table class="full-width-table" matSort aria-label="Elements">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef class="table-mobile">Id</th>
+            <td mat-cell *matCellDef="let row" class="table-mobile">{{row.userId}}</td>
+        </ng-container>
 
-      <th mat-header-cell *matHeaderCellDef class="table-mobile">Name</th>
-      <td mat-cell *matCellDef="let row" class="table-mobile"><img  src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" alt="" class="admin-avatar"> {{row.firstName}} {{row.lastName}}</td>
-    </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <!--ADD mat-sort-header  to add sorting-->
 
-    <!-- Email -->
-    <!-- <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef class="table-mobile">Name</th>
+            <td mat-cell *matCellDef="let row" class="table-mobile"><img src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" alt="" class="admin-avatar"> {{row.firstName}} {{row.lastName}}</td>
+        </ng-container>
+
+        <!-- Email -->
+        <!-- <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef class="table-mobile">Email</th>
       <td mat-cell *matCellDef="let row" class="table-mobile">{{row.email}}</td>
     </ng-container> -->
 
-   <!-- Registration Date -->
-   <ng-container matColumnDef="registrationDate">
+        <!-- Registration Date -->
+        <ng-container matColumnDef="registrationDate">
 
-    <!--ADD mat-sort-header  to add sorting-->
-    <th mat-header-cell *matHeaderCellDef  class="table-mobile">RegistrationDate</th>
-    <td mat-cell *matCellDef="let row" class="table-mobile">{{row.registrationDate | date}}</td>
-  </ng-container>
+            <!--ADD mat-sort-header  to add sorting-->
+            <th mat-header-cell *matHeaderCellDef class="table-mobile">RegistrationDate</th>
+            <td mat-cell *matCellDef="let row" class="table-mobile">{{row.registrationDate | date}}</td>
+        </ng-container>
 
-    <!-- Status   -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef class="table-mobile">Status</th>
-      <td mat-cell *matCellDef="let row; let i = index;" class="table-mobile"><mat-slide-toggle (change)="onStatusChange(row.userId,i)"
-        [checked]="row.status == 'Active'"></mat-slide-toggle><span>{{row.status}}</span> </td>
-    </ng-container>
+        <!-- Status   -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="table-mobile">Status</th>
+            <td mat-cell *matCellDef="let row; let i = index;" class="table-mobile">
+                <mat-slide-toggle (change)="onStatusChange(row.userId,i)" [checked]="row.status == 'Active'"></mat-slide-toggle><span>{{row.status}}</span> </td>
+        </ng-container>
 
-    <!-- Actions -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef class="table-mobile">Actions</th>
-      <td mat-cell *matCellDef="let row" class="table-mobile"><a (click)="onViewClick(row.userId)" class="actions" mat-stroked-button color=""><i class="fa fa-eye"></i></a><a (click)="onEditClick()" class="actions" mat-stroked-button color="blue"><i class="fa fa-edit"></i></a>
-      </td>
-    </ng-container>
+        <!-- Actions -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="table-mobile">Actions</th>
+            <td mat-cell *matCellDef="let row" class="table-mobile"><a (click)="onViewClick(row.userId)" class="actions" mat-stroked-button color=""><i class="fa fa-eye"></i></a><a (click)="onEditClick(row.userId)" class="actions" mat-stroked-button color="blue"><i class="fa fa-edit"></i></a>
+            </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 
-  <mat-paginator #paginator
-  class="full-width-table"
-      [length]="dataSource?.data?.length"
-      [pageIndex]="0"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20, 100]"
-      aria-label="Select page">
-  </mat-paginator>
+    <mat-paginator #paginator class="full-width-table" [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 100]" aria-label="Select page">
+    </mat-paginator>
 </div>

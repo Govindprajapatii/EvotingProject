@@ -19,7 +19,9 @@ constructor(private router:Router, private http:HttpClient) { }
 
 
 
-signUp(UserData):Observable<boolean>{
+signUp(UserData:any):Observable<boolean>{
+  
+UserData.PhoneNumber = UserData.PhoneNumber.toString();
   console.log(UserData);
   // var temp = {"firstName":"Govind","lastName":"Prajapati","Email":"ABC@com","password":"Govind@11"}
 return this.http.post<any>(`${this.apiUrl}/Register`,UserData).pipe(
@@ -27,15 +29,11 @@ return this.http.post<any>(`${this.apiUrl}/Register`,UserData).pipe(
   mapTo(true),
   catchError(error => {
     console.log(error);
-    return of(false);
+    return of(false); 
   })
 );
 }
 
-getColonies()
-  {
-  return this.http.get(`${this.apiUrl}/AllColonies`);
-  }
 
 
 logIn(user : {Email:string,Password:string,UserRole:string}): Observable<boolean>{
@@ -81,19 +79,19 @@ private doLoginUser(userName,tokens){
  
 
 private storeTokens(tokens){
-  console.log(tokens);
-  localStorage.setItem("UserRole",tokens.userRole);
-  localStorage.setItem(this.jwt_token,tokens.token);
-  localStorage.setItem(this.refresh_token,tokens.refreshToken)
+ 
+  sessionStorage.setItem("UserRole",tokens.userRole);
+  sessionStorage.setItem(this.jwt_token,tokens.token);
+  sessionStorage.setItem(this.refresh_token,tokens.refreshToken)
 }
 
 
 private getRefreshToken(){
-  return  localStorage.getItem(this.refresh_token);
+  return  sessionStorage.getItem(this.refresh_token);
 }
 
 getJwtToken(){
-  return localStorage.getItem(this.jwt_token);
+  return sessionStorage.getItem(this.jwt_token);
 }
 
 private loggedOutUser(){
@@ -103,22 +101,22 @@ this.removeTokens();
 
 
 private removeTokens(){
-  localStorage.removeItem(this.jwt_token);
-  localStorage.removeItem(this.refresh_token);
-  localStorage.removeItem("UserRole");
+  sessionStorage.removeItem(this.jwt_token);
+  sessionStorage.removeItem(this.refresh_token);
+  sessionStorage.removeItem("UserRole");
 
 }
 
 private storeJwtToken(token:any){
-  localStorage.setItem(this.jwt_token,token);
+  sessionStorage.setItem(this.jwt_token,token);
 }
 
 getUserRole() {
-  return localStorage.getItem("UserRole");
+  return sessionStorage.getItem("UserRole");
 }
 
 storeRefreshToken(refreshToken){
-  localStorage.setItem(this.refresh_token,refreshToken);
+  sessionStorage.setItem(this.refresh_token,refreshToken);
 
 }
 

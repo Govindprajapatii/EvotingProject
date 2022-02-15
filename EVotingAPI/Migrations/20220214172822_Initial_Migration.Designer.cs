@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EVotingApi.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220211115833_Role")]
-    partial class Role
+    [Migration("20220214172822_Initial_Migration")]
+    partial class Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

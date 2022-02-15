@@ -40,8 +40,8 @@ namespace JwtLogin.Controllers
 
         //Create  a role by giving Role name
         [HttpPost]
-        [Route("CreateRole")]
-        public async Task<IActionResult> CreateRole([FromForm] string name)
+        [Route("CreateRole/{name}")]
+        public async Task<IActionResult> CreateRole( string name)
         {
 
             if (name == null)
